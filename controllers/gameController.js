@@ -3,26 +3,7 @@ const connect = require("../config/db");
 const getAllGames = async (req, res) => {
     try{
         const users = await new Promise(async (resolve, reject) => {
-            connect.query(`
-    SELECT 
-       game.id AS game_id,
-       game.name AS game_name,
-       game.playerCount,
-       game.playerPerTeam,
-       game.requiredForPrize,
-       game.createdAt AS game_createdAt,
-       game.updatedAt AS game_updatedAt,
-       variant.name AS variant_name,
-       matchtype.type AS match_type
-    FROM 
-        game
-    JOIN 
-        gamevariants ON game.id = gamevariants.gameId
-    JOIN 
-        variant ON gamevariants.variantId = variant.id
-    JOIN 
-        matchtype ON gamevariants.typeId = matchtype.id;
-`, (err, result) => {
+            connect.query("SELECT * FROM `game`", (err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -50,14 +31,58 @@ const getGameById = async (req, res) => {
 
 const createGame = async (req, res) => {
 
+    const name = req.body.name;
+    const playerCount = req.body.playerCount; 
+    const playerPerTeam = req.body.playerCount; 
+    const requiredForPrize = req.body.requiredForPrize;
+    
+    try{
+        const users = await new Promise((resolve, reject) => {
+            connect.query("INSERT INTO `game` (`id`, `name`, `playerCount`, `playerPerTeam`, `requiredForPrize`) VALUES (NULL, ?, ?, ?, ?);", [name, playerCount,playerPerTeam,requiredForPrize],(err, result) => {
+                if (err) reject(err); 
+                else resolve(result);
+            });
+        });
+
+        return res.json(users);
+    } catch (error){ res.status(500).json(error); }
 };
 
 const updateGame = async (req, res) => {
 
+    const id = req.params.id;
+    
+    const name = req.body.name;
+    const playerCount = req.body.playerCount; 
+    const playerPerTeam = req.body.playerCount; 
+    const requiredForPrize = req.body.requiredForPrize;
+
+    try{
+        const users = await new Promise((resolve, reject) => {
+            connect.query("UPDATE `game` SET `name` = ?, `playerCount` = ?, `playerPerTeam` = ?, `requiredForPrize` = ? WHERE `game`.`id` = ?", [name, playerCount, playerPerTeam, requiredForPrize, id],(err, result) => {
+                if (err) reject(err); 
+                else resolve(result);
+            });
+        });
+
+        return res.json(users);
+    } catch (error){ res.status(500).json(error); }
 };
 
 const deleteGame = async (req, res) => {
 
+    const id = req.params.id;
+
+    try{
+        const users = await new Promise((resolve, reject) => {
+            connect.query("DELETE FROM `game` WHERE `game`.`id` = ?", [id],(err, result) => {
+                if (err) reject(err); 
+                else resolve(result);
+            });
+        });
+
+        return res.json(users);
+    } catch (error){ res.status(500).json(error); }
 };
 
 module.exports = {
