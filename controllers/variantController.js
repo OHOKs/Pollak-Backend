@@ -1,9 +1,9 @@
 const connect = require("../config/db");
 
-const getAllTeams = async (req, res) => {
+const getAllVariants = async (req, res) => {
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("SELECT * FROM `team`", (err, result) => {
+            connect.query("SELECT * FROM `variant`", (err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -13,13 +13,13 @@ const getAllTeams = async (req, res) => {
     } catch (error){ res.status(500).json(error); }
 };
 
-const getTeamByName = async (req, res) => {
-    
+const getVariantByName = async (req, res) => {
+
     const name = req.params.name; 
 
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("SELECT * FROM `team` WHERE `name` = ?", [name],(err, result) => {
+            connect.query("SELECT * FROM `variant` WHERE `name` = ?", [name],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -29,13 +29,13 @@ const getTeamByName = async (req, res) => {
     } catch (error){ res.status(500).json(error); }
 };
 
-const createTeam = async (req, res) => {
+const createVariant = async (req, res) => {
 
     const name = req.body.name; 
 
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("INSERT INTO `team` (`id`, `name`) VALUES (NULL, ?);", [name],(err, result) => {
+            connect.query("INSERT INTO `variant` (`id`, `name`) VALUES (NULL, ?);", [name],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -45,14 +45,13 @@ const createTeam = async (req, res) => {
     } catch (error){ res.status(500).json(error); }
 };
 
-const updateTeam = async (req, res) => {
-
+const updateVariant = async (req, res) => {
     const id = req.params.id;
     const name = req.body.name 
 
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("UPDATE `team` SET `name` = ? WHERE `team`.`id` = ?", [name, id],(err, result) => {
+            connect.query("UPDATE `variant` SET `name` = ? WHERE `variant`.`id` = ?", [name, id],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -62,13 +61,12 @@ const updateTeam = async (req, res) => {
     } catch (error){ res.status(500).json(error); }
 };
 
-const deleteTeam = async (req, res) => {
-
+const deleteVariant = async (req, res) => {
     const id = req.params.id;
 
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("DELETE FROM `team` WHERE `team`.`id` = ?", [id],(err, result) => {
+            connect.query("DELETE FROM `variant` WHERE `variant`.`id` = ?", [id],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -79,9 +77,9 @@ const deleteTeam = async (req, res) => {
 };
 
 module.exports = {
-    getAllTeams,
-    getTeamByName,
-    createTeam,
-    updateTeam,
-    deleteTeam
+    getAllVariants,
+    getVariantByName,
+    createVariant,
+    updateVariant,
+    deleteVariant,
 }

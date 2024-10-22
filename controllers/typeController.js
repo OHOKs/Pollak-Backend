@@ -1,9 +1,9 @@
 const connect = require("../config/db");
 
-const getAllTeams = async (req, res) => {
+const getAllTypes = async (req, res) => {
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("SELECT * FROM `team`", (err, result) => {
+            connect.query("SELECT * FROM `matchtype`", (err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -13,13 +13,13 @@ const getAllTeams = async (req, res) => {
     } catch (error){ res.status(500).json(error); }
 };
 
-const getTeamByName = async (req, res) => {
-    
-    const name = req.params.name; 
+const getTypeByType = async (req, res) => {
+
+    const type = req.params.type; 
 
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("SELECT * FROM `team` WHERE `name` = ?", [name],(err, result) => {
+            connect.query("SELECT * FROM `matchtype` WHERE `type` = ?", [type],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -29,13 +29,13 @@ const getTeamByName = async (req, res) => {
     } catch (error){ res.status(500).json(error); }
 };
 
-const createTeam = async (req, res) => {
+const createType = async (req, res) => {
 
-    const name = req.body.name; 
+    const type = req.body.type; 
 
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("INSERT INTO `team` (`id`, `name`) VALUES (NULL, ?);", [name],(err, result) => {
+            connect.query("INSERT INTO `matchtype` (`id`, `type`) VALUES (NULL, ?);", [type],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -45,14 +45,14 @@ const createTeam = async (req, res) => {
     } catch (error){ res.status(500).json(error); }
 };
 
-const updateTeam = async (req, res) => {
+const updateType = async (req, res) => {
 
     const id = req.params.id;
-    const name = req.body.name 
+    const type = req.body.type 
 
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("UPDATE `team` SET `name` = ? WHERE `team`.`id` = ?", [name, id],(err, result) => {
+            connect.query("UPDATE `matchtype` SET `type` = ? WHERE `matchtype`.`id` = ?", [type, id],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -62,13 +62,13 @@ const updateTeam = async (req, res) => {
     } catch (error){ res.status(500).json(error); }
 };
 
-const deleteTeam = async (req, res) => {
+const deleteType = async (req, res) => {
 
     const id = req.params.id;
 
     try{
         const users = await new Promise((resolve, reject) => {
-            connect.query("DELETE FROM `team` WHERE `team`.`id` = ?", [id],(err, result) => {
+            connect.query("DELETE FROM `matchtype` WHERE `matchtype`.`id` = ?", [id],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
@@ -79,9 +79,9 @@ const deleteTeam = async (req, res) => {
 };
 
 module.exports = {
-    getAllTeams,
-    getTeamByName,
-    createTeam,
-    updateTeam,
-    deleteTeam
+    getAllTypes,
+    getTypeByType,
+    createType,
+    updateType,
+    deleteType
 }

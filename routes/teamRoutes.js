@@ -3,7 +3,7 @@ var Router = express.Router()
 
 const{
     getAllTeams,
-    getTeamById,
+    getTeamByName,
     createTeam,
     updateTeam,
     deleteTeam
@@ -13,7 +13,7 @@ Router.get('/', getAllTeams);
 
 Router.post('/', createTeam);
 
-Router.get('/:id', getTeamById);
+Router.get('/:name', getTeamByName);
 
 Router.delete('/:id', deleteTeam);
 

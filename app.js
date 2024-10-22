@@ -10,19 +10,23 @@ const userRoutes = require("./routes/userRoutes");
 const teamRoutes = require("./routes/teamRoutes");
 const gameRoutes = require("./routes/gameRoutes");
 const roundRoutes = require("./routes/roundRoutes");
+const variantRoutes = require("./routes/variantRoutes");
+const typeRoutes = require("./routes/typeRoutes");
 
 dotenv.config();
 const app = express();
 
 //session
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/user', userRoutes);
 app.use('/team', teamRoutes);
 app.use('/game', gameRoutes);
 app.use('/round', roundRoutes);
+app.use('/variant', variantRoutes);
+app.use('/type', typeRoutes);
 
 //app.use(checkSessionMiddleware)
 //app.use(checkTokenMiddleware)
