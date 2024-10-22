@@ -6,8 +6,9 @@
 - Games : In Progess
 - Rounds : In Progess
 - Seeds : In Progess
-- Users : In Progess
+- Users : Done ? (without encryption)
 - Teams : In Progess
 - Sessions : TODO
 - Tokens : TODO
+- AuthController : TODO
 - Invite Code : TODO
