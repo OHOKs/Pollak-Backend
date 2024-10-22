@@ -16,4 +16,5 @@ The backend of the Pollak E-Sports
 - GameVariants : CRD + getGameVariantsByGameId (Without update method, because its useless and we dont have a primary id. Just delete and recreate)  
 - Sessions : TODO
 - Tokens : TODO
-- AuthControLler : TODO
+- AuthController : TODO
+- Invite Code : TODO
