@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Okt 22. 10:26
+-- Létrehozás ideje: 2024. Okt 22. 13:00
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -44,7 +44,8 @@ CREATE TABLE `game` (
 INSERT INTO `game` (`id`, `name`, `playerCount`, `playerPerTeam`, `requiredForPrize`, `createdAt`, `updatedAt`) VALUES
 (1, 'Valorant Game', 20, 5, 50000, '2024-10-17 20:42:33', '2024-10-17 20:42:33'),
 (2, 'R6 Game', 20, 5, 50000, '2024-10-17 20:43:36', '2024-10-17 20:43:36'),
-(3, 'LOL Game', 20, 5, 50000, '2024-10-17 20:43:45', '2024-10-17 20:43:45');
+(3, 'LOL Game', 20, 5, 50000, '2024-10-17 20:43:45', '2024-10-17 20:43:45'),
+(5, 'ValorantGame', 20, 20, 50000, '2024-10-22 10:43:05', '2024-10-22 10:43:05');
 
 -- --------------------------------------------------------
 
@@ -175,7 +176,6 @@ CREATE TABLE `seed` (
 INSERT INTO `seed` (`id`, `date`, `roundId`, `createdAt`, `updatedAt`) VALUES
 (1, '2024-10-17 21:11:07', 1, '2024-10-17 21:11:07', '2024-10-17 21:11:07'),
 (2, '2024-10-17 21:11:17', 2, '2024-10-17 21:11:17', '2024-10-17 21:11:17'),
-(3, '2024-10-17 21:11:17', 3, '2024-10-17 21:11:17', '2024-10-17 21:11:17'),
 (4, '2024-10-17 21:11:17', 4, '2024-10-17 21:11:17', '2024-10-17 21:11:17'),
 (5, '2024-10-17 21:11:47', 5, '2024-10-17 21:11:47', '2024-10-17 21:11:47'),
 (6, '2024-10-17 21:11:47', 6, '2024-10-17 21:11:47', '2024-10-17 21:11:47'),
@@ -184,7 +184,8 @@ INSERT INTO `seed` (`id`, `date`, `roundId`, `createdAt`, `updatedAt`) VALUES
 (9, '2024-10-17 21:11:47', 9, '2024-10-17 21:11:47', '2024-10-17 21:11:47'),
 (10, '2024-10-17 21:11:47', 10, '2024-10-17 21:11:47', '2024-10-17 21:11:47'),
 (11, '2024-10-17 21:11:47', 11, '2024-10-17 21:11:47', '2024-10-17 21:11:47'),
-(12, '2024-10-17 21:11:47', 12, '2024-10-17 21:11:47', '2024-10-17 21:11:47');
+(12, '2024-10-17 21:11:47', 12, '2024-10-17 21:11:47', '2024-10-17 21:11:47'),
+(13, '0000-00-00 00:00:00', 3, '2024-10-22 09:44:31', '2024-10-22 09:44:31');
 
 -- --------------------------------------------------------
 
@@ -297,6 +298,7 @@ INSERT INTO `usersonteam` (`teamId`, `userId`, `createdAt`, `updatedAt`) VALUES
 (3, 11, '2024-10-17 21:01:48', '2024-10-17 21:01:48'),
 (3, 12, '2024-10-17 21:01:48', '2024-10-17 21:01:48'),
 (3, 13, '2024-10-17 21:01:48', '2024-10-17 21:01:48'),
+(4, 1, '2024-10-22 10:06:26', '2024-10-22 10:06:26'),
 (4, 14, '2024-10-17 21:02:32', '2024-10-17 21:02:32'),
 (4, 15, '2024-10-17 21:02:32', '2024-10-17 21:02:32'),
 (4, 16, '2024-10-17 21:02:32', '2024-10-17 21:02:32'),
@@ -349,9 +351,10 @@ ALTER TABLE `game`
 -- A tábla indexei `gamevariants`
 --
 ALTER TABLE `gamevariants`
-  ADD PRIMARY KEY (`gameId`,`variantId`),
+  ADD PRIMARY KEY (`gameId`),
   ADD KEY `fk_game_variant_variant` (`variantId`),
-  ADD KEY `typeId` (`typeId`);
+  ADD KEY `typeId` (`typeId`),
+  ADD KEY `gameId` (`gameId`);
 
 --
 -- A tábla indexei `matchtype`
@@ -392,7 +395,8 @@ ALTER TABLE `team`
 ALTER TABLE `teamsonseed`
   ADD PRIMARY KEY (`teamOneId`,`seedId`),
   ADD KEY `fk_team_seed_seed` (`seedId`),
-  ADD KEY `fk_team_seed_team_two` (`teamTwoId`);
+  ADD KEY `fk_team_seed_team_two` (`teamTwoId`),
+  ADD KEY `teamOneId` (`teamOneId`);
 
 --
 -- A tábla indexei `users`
@@ -421,7 +425,7 @@ ALTER TABLE `variant`
 -- AUTO_INCREMENT a táblához `game`
 --
 ALTER TABLE `game`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `matchtype`
@@ -433,13 +437,13 @@ ALTER TABLE `matchtype`
 -- AUTO_INCREMENT a táblához `round`
 --
 ALTER TABLE `round`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT a táblához `seed`
 --
 ALTER TABLE `seed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT a táblához `team`
