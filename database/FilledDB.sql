@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Okt 22. 13:00
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Oct 22, 2024 at 02:23 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `pollakbackend`
+-- Database: `pollakbackend`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `game`
+-- Table structure for table `game`
 --
 
 CREATE TABLE `game` (
@@ -38,7 +38,7 @@ CREATE TABLE `game` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `game`
+-- Dumping data for table `game`
 --
 
 INSERT INTO `game` (`id`, `name`, `playerCount`, `playerPerTeam`, `requiredForPrize`, `createdAt`, `updatedAt`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `game` (`id`, `name`, `playerCount`, `playerPerTeam`, `requiredForPr
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `gamevariants`
+-- Table structure for table `gamevariants`
 --
 
 CREATE TABLE `gamevariants` (
@@ -62,7 +62,7 @@ CREATE TABLE `gamevariants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `gamevariants`
+-- Dumping data for table `gamevariants`
 --
 
 INSERT INTO `gamevariants` (`gameId`, `variantId`, `createdAt`, `updatedAt`, `typeId`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `gamevariants` (`gameId`, `variantId`, `createdAt`, `updatedAt`, `ty
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `matchtype`
+-- Table structure for table `matchtype`
 --
 
 CREATE TABLE `matchtype` (
@@ -82,7 +82,7 @@ CREATE TABLE `matchtype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `matchtype`
+-- Dumping data for table `matchtype`
 --
 
 INSERT INTO `matchtype` (`id`, `type`) VALUES
@@ -95,7 +95,7 @@ INSERT INTO `matchtype` (`id`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `round`
+-- Table structure for table `round`
 --
 
 CREATE TABLE `round` (
@@ -107,7 +107,7 @@ CREATE TABLE `round` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `round`
+-- Dumping data for table `round`
 --
 
 INSERT INTO `round` (`id`, `number`, `title`, `createdAt`, `updatedAt`) VALUES
@@ -127,7 +127,7 @@ INSERT INTO `round` (`id`, `number`, `title`, `createdAt`, `updatedAt`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `roundsongame`
+-- Table structure for table `roundsongame`
 --
 
 CREATE TABLE `roundsongame` (
@@ -138,7 +138,7 @@ CREATE TABLE `roundsongame` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `roundsongame`
+-- Dumping data for table `roundsongame`
 --
 
 INSERT INTO `roundsongame` (`roundId`, `gameId`, `createdAt`, `updatedAt`) VALUES
@@ -158,7 +158,7 @@ INSERT INTO `roundsongame` (`roundId`, `gameId`, `createdAt`, `updatedAt`) VALUE
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `seed`
+-- Table structure for table `seed`
 --
 
 CREATE TABLE `seed` (
@@ -170,7 +170,7 @@ CREATE TABLE `seed` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `seed`
+-- Dumping data for table `seed`
 --
 
 INSERT INTO `seed` (`id`, `date`, `roundId`, `createdAt`, `updatedAt`) VALUES
@@ -190,7 +190,7 @@ INSERT INTO `seed` (`id`, `date`, `roundId`, `createdAt`, `updatedAt`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `team`
+-- Table structure for table `team`
 --
 
 CREATE TABLE `team` (
@@ -201,7 +201,7 @@ CREATE TABLE `team` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `team`
+-- Dumping data for table `team`
 --
 
 INSERT INTO `team` (`id`, `name`, `createdAt`, `updatedAt`) VALUES
@@ -213,7 +213,7 @@ INSERT INTO `team` (`id`, `name`, `createdAt`, `updatedAt`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `teamsonseed`
+-- Table structure for table `teamsonseed`
 --
 
 CREATE TABLE `teamsonseed` (
@@ -225,7 +225,7 @@ CREATE TABLE `teamsonseed` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `teamsonseed`
+-- Dumping data for table `teamsonseed`
 --
 
 INSERT INTO `teamsonseed` (`teamOneId`, `teamTwoId`, `seedId`, `createdAt`, `updatedAt`) VALUES
@@ -236,7 +236,7 @@ INSERT INTO `teamsonseed` (`teamOneId`, `teamTwoId`, `seedId`, `createdAt`, `upd
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -250,7 +250,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `om`, `password`, `createdAt`, `updatedAt`) VALUES
@@ -278,7 +278,7 @@ INSERT INTO `users` (`id`, `email`, `username`, `om`, `password`, `createdAt`, `
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `usersonteam`
+-- Table structure for table `usersonteam`
 --
 
 CREATE TABLE `usersonteam` (
@@ -289,7 +289,7 @@ CREATE TABLE `usersonteam` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `usersonteam`
+-- Dumping data for table `usersonteam`
 --
 
 INSERT INTO `usersonteam` (`teamId`, `userId`, `createdAt`, `updatedAt`) VALUES
@@ -318,7 +318,7 @@ INSERT INTO `usersonteam` (`teamId`, `userId`, `createdAt`, `updatedAt`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `variant`
+-- Table structure for table `variant`
 --
 
 CREATE TABLE `variant` (
@@ -329,7 +329,7 @@ CREATE TABLE `variant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `variant`
+-- Dumping data for table `variant`
 --
 
 INSERT INTO `variant` (`id`, `name`, `createdAt`, `updatedAt`) VALUES
@@ -338,17 +338,17 @@ INSERT INTO `variant` (`id`, `name`, `createdAt`, `updatedAt`) VALUES
 (3, 'LOL', '2024-10-17 20:43:03', '2024-10-21 10:42:38');
 
 --
--- Indexek a kiírt táblákhoz
+-- Indexes for dumped tables
 --
 
 --
--- A tábla indexei `game`
+-- Indexes for table `game`
 --
 ALTER TABLE `game`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `gamevariants`
+-- Indexes for table `gamevariants`
 --
 ALTER TABLE `gamevariants`
   ADD PRIMARY KEY (`gameId`),
@@ -357,118 +357,117 @@ ALTER TABLE `gamevariants`
   ADD KEY `gameId` (`gameId`);
 
 --
--- A tábla indexei `matchtype`
+-- Indexes for table `matchtype`
 --
 ALTER TABLE `matchtype`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `round`
+-- Indexes for table `round`
 --
 ALTER TABLE `round`
   ADD PRIMARY KEY (`id`),
   ADD KEY `gameId` (`title`);
 
 --
--- A tábla indexei `roundsongame`
+-- Indexes for table `roundsongame`
 --
 ALTER TABLE `roundsongame`
   ADD PRIMARY KEY (`roundId`,`gameId`),
   ADD KEY `fk_round_game_game` (`gameId`);
 
 --
--- A tábla indexei `seed`
+-- Indexes for table `seed`
 --
 ALTER TABLE `seed`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_seed_round` (`roundId`);
 
 --
--- A tábla indexei `team`
+-- Indexes for table `team`
 --
 ALTER TABLE `team`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `teamsonseed`
+-- Indexes for table `teamsonseed`
 --
 ALTER TABLE `teamsonseed`
-  ADD PRIMARY KEY (`teamOneId`,`seedId`),
   ADD KEY `fk_team_seed_seed` (`seedId`),
   ADD KEY `fk_team_seed_team_two` (`teamTwoId`),
   ADD KEY `teamOneId` (`teamOneId`);
 
 --
--- A tábla indexei `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `usersonteam`
+-- Indexes for table `usersonteam`
 --
 ALTER TABLE `usersonteam`
   ADD PRIMARY KEY (`teamId`,`userId`),
   ADD KEY `fk_user_team_user` (`userId`);
 
 --
--- A tábla indexei `variant`
+-- Indexes for table `variant`
 --
 ALTER TABLE `variant`
   ADD PRIMARY KEY (`id`);
 
 --
--- A kiírt táblák AUTO_INCREMENT értéke
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT a táblához `game`
+-- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT a táblához `matchtype`
+-- AUTO_INCREMENT for table `matchtype`
 --
 ALTER TABLE `matchtype`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT a táblához `round`
+-- AUTO_INCREMENT for table `round`
 --
 ALTER TABLE `round`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT a táblához `seed`
+-- AUTO_INCREMENT for table `seed`
 --
 ALTER TABLE `seed`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT a táblához `team`
+-- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT a táblához `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT a táblához `variant`
+-- AUTO_INCREMENT for table `variant`
 --
 ALTER TABLE `variant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- Megkötések a kiírt táblákhoz
+-- Constraints for dumped tables
 --
 
 --
--- Megkötések a táblához `gamevariants`
+-- Constraints for table `gamevariants`
 --
 ALTER TABLE `gamevariants`
   ADD CONSTRAINT `fk_game_variant_game` FOREIGN KEY (`gameId`) REFERENCES `game` (`id`) ON DELETE CASCADE,
@@ -476,20 +475,20 @@ ALTER TABLE `gamevariants`
   ADD CONSTRAINT `gamevariants_ibfk_1` FOREIGN KEY (`typeId`) REFERENCES `matchtype` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `roundsongame`
+-- Constraints for table `roundsongame`
 --
 ALTER TABLE `roundsongame`
   ADD CONSTRAINT `fk_round_game_game` FOREIGN KEY (`gameId`) REFERENCES `game` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_round_game_round` FOREIGN KEY (`roundId`) REFERENCES `round` (`id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `seed`
+-- Constraints for table `seed`
 --
 ALTER TABLE `seed`
   ADD CONSTRAINT `fk_seed_round` FOREIGN KEY (`roundId`) REFERENCES `round` (`id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `teamsonseed`
+-- Constraints for table `teamsonseed`
 --
 ALTER TABLE `teamsonseed`
   ADD CONSTRAINT `fk_team_seed_seed` FOREIGN KEY (`seedId`) REFERENCES `seed` (`id`) ON DELETE CASCADE,
@@ -498,7 +497,7 @@ ALTER TABLE `teamsonseed`
   ADD CONSTRAINT `teamsonseed_ibfk_1` FOREIGN KEY (`teamOneId`) REFERENCES `team` (`id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `usersonteam`
+-- Constraints for table `usersonteam`
 --
 ALTER TABLE `usersonteam`
   ADD CONSTRAINT `fk_user_team_team` FOREIGN KEY (`teamId`) REFERENCES `team` (`id`) ON DELETE CASCADE,
