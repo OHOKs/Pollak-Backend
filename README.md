@@ -1,13 +1,13 @@
 ## Pollak-Backend
 
 #CheckList
-- Variants : Done
-- Types : Done
+- Variants : Done || CRUD + getByName
+- Types : Done || CRUD + getByName
 - Games : In Progess
 - Rounds : In Progess
 - Seeds : In Progess
 - Users : Done ? (without encryption)
-- Teams : In Progess
+- Teams : Done || CRUD + getByName
 - Sessions : TODO
 - Tokens : TODO
 - AuthController : TODO
