@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Okt 21. 11:57
+-- Létrehozás ideje: 2024. Okt 22. 10:26
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -110,18 +110,18 @@ CREATE TABLE `round` (
 --
 
 INSERT INTO `round` (`id`, `number`, `title`, `createdAt`, `updatedAt`) VALUES
-(1, 1, 'Valorant', '2024-10-17 20:45:00', '2024-10-17 20:46:55'),
-(2, 2, 'Valorant', '2024-10-17 20:45:11', '2024-10-17 20:47:01'),
-(3, 3, 'Valorant', '2024-10-17 20:45:22', '2024-10-17 20:47:11'),
-(4, 4, 'Valorant\r\n', '2024-10-17 20:45:32', '2024-10-17 20:47:16'),
-(5, 1, 'R6', '2024-10-17 20:47:25', '2024-10-17 20:47:25'),
-(6, 2, 'R6', '2024-10-17 20:47:44', '2024-10-17 20:47:44'),
-(7, 3, 'R6', '2024-10-17 20:47:44', '2024-10-17 20:47:44'),
-(8, 4, 'R6', '2024-10-17 20:47:44', '2024-10-17 20:47:44'),
-(9, 1, 'LOL', '2024-10-17 20:48:51', '2024-10-17 20:48:51'),
-(10, 2, 'LOL', '2024-10-17 20:48:51', '2024-10-17 20:48:51'),
-(11, 3, 'LOL', '2024-10-17 20:48:51', '2024-10-17 20:48:51'),
-(12, 4, 'LOL', '2024-10-17 20:48:51', '2024-10-17 20:48:51');
+(1, 1, 'Valorant', '2024-10-17 20:45:00', '2024-10-21 10:48:50'),
+(2, 2, 'Valorant', '2024-10-17 20:45:11', '2024-10-21 10:49:06'),
+(3, 3, 'Valorant', '2024-10-17 20:45:22', '2024-10-21 10:49:10'),
+(4, 4, 'Valorant', '2024-10-17 20:45:32', '2024-10-21 10:49:12'),
+(5, 1, 'R6', '2024-10-17 20:47:25', '2024-10-21 10:49:31'),
+(6, 2, 'R6', '2024-10-17 20:47:44', '2024-10-21 10:49:34'),
+(7, 3, 'R6', '2024-10-17 20:47:44', '2024-10-21 10:49:37'),
+(8, 4, 'R6', '2024-10-17 20:47:44', '2024-10-21 10:49:38'),
+(9, 1, 'LOL', '2024-10-17 20:48:51', '2024-10-21 10:49:42'),
+(10, 2, 'LOL', '2024-10-17 20:48:51', '2024-10-21 10:49:45'),
+(11, 3, 'LOL', '2024-10-17 20:48:51', '2024-10-21 10:49:47'),
+(12, 4, 'LOL', '2024-10-17 20:48:51', '2024-10-21 10:49:51');
 
 -- --------------------------------------------------------
 
@@ -333,7 +333,7 @@ CREATE TABLE `variant` (
 INSERT INTO `variant` (`id`, `name`, `createdAt`, `updatedAt`) VALUES
 (1, 'Valorant', '2024-10-17 20:42:45', '2024-10-17 20:42:45'),
 (2, 'R6', '2024-10-17 20:42:54', '2024-10-17 20:42:54'),
-(3, 'LOL\r\n', '2024-10-17 20:43:03', '2024-10-17 20:43:03');
+(3, 'LOL', '2024-10-17 20:43:03', '2024-10-21 10:42:38');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -363,7 +363,8 @@ ALTER TABLE `matchtype`
 -- A tábla indexei `round`
 --
 ALTER TABLE `round`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gameId` (`title`);
 
 --
 -- A tábla indexei `roundsongame`
@@ -426,7 +427,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT a táblához `matchtype`
 --
 ALTER TABLE `matchtype`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `round`
@@ -444,19 +445,19 @@ ALTER TABLE `seed`
 -- AUTO_INCREMENT a táblához `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT a táblához `variant`
 --
 ALTER TABLE `variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Megkötések a kiírt táblákhoz
