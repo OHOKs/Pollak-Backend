@@ -17,6 +17,7 @@ const usersOnTeamRoutes = require("./routes/usersOnTeamRoutes");
 const roundsOnGameRoutes = require("./routes/roundsOnGameRoutes");
 const gameVariantsRoutes = require("./routes/gameVariantsRoutes");
 const teamsOnSeedRoutes = require("./routes/teamsOnSeedRoutes");
+const mixedRoutes = require("./routes/mixedRoutes");
 
 dotenv.config();
 const app = express();
@@ -34,7 +35,7 @@ app.use('/seed', seedRoutes);
 app.use('/usersonteam', usersOnTeamRoutes);
 app.use('/roundsongame', roundsOnGameRoutes);
 app.use('/gamevariants', gameVariantsRoutes);
-app.use('/teamsonseed', teamsOnSeedRoutes)
+app.use('/mixed', mixedRoutes)
 
 //session
 //app.use(checkSessionMiddleware)
