@@ -1,5 +1,7 @@
 # Pollak-Backend
 
+The backend of the Pollak E-Sports
+
 ## CheckList
 - Users : Done || CRUD + getById
 - Teams : Done || CRUD + getByName
