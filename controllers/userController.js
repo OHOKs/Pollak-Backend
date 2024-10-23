@@ -18,14 +18,14 @@ const getUserById = async (req, res) => {
     const id = req.params.id; 
 
     try{
-        const users = await new Promise((resolve, reject) => {
+        const user = await new Promise((resolve, reject) => {
             connect.query("SELECT * FROM `users` WHERE `id` = ?", [id],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
         });
 
-        return res.json(users);
+        return res.json(user);
     } catch (error){ res.status(500).json(error); }
 };
 
@@ -39,14 +39,14 @@ const createUser = async (req, res) => {
     const pwd = req.body.password;  
 
     try{
-        const users = await new Promise((resolve, reject) => {
+        const response = await new Promise((resolve, reject) => {
             connect.query("INSERT INTO `users` (`id`, `username`,`email`,`om`,`password`) VALUES (NULL, ?, ?, ?, ?);", [username, email, om, pwd],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
         });
 
-        return res.json(users);
+        return res.json(response);
     } catch (error){ res.status(500).json(error); }
 };
 
@@ -61,14 +61,14 @@ const updateUser = async (req, res) => {
     const pwd = req.body.password; 
 
     try{
-        const users = await new Promise((resolve, reject) => {
+        const response = await new Promise((resolve, reject) => {
             connect.query("UPDATE `users` SET `username` = ?, `email` = ?,`om` = ?,`password` = ? WHERE `users`.`id` = ?", [username, email, om, pwd, id],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
         });
 
-        return res.json(users);
+        return res.json(response);
     } catch (error){ res.status(500).json(error); }
 };
 
@@ -77,14 +77,14 @@ const deleteUser = async (req, res) => {
     const id = req.params.id;
 
     try{
-        const users = await new Promise((resolve, reject) => {
+        const response = await new Promise((resolve, reject) => {
             connect.query("DELETE FROM `users` WHERE `users`.`id` = ?", [id],(err, result) => {
                 if (err) reject(err); 
                 else resolve(result);
             });
         });
 
-        return res.json(users);
+        return res.json(response);
     } catch (error){ res.status(500).json(error); }
 };
 

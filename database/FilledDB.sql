@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2024 at 02:23 PM
+-- Generation Time: Oct 23, 2024 at 12:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -33,6 +33,7 @@ CREATE TABLE `game` (
   `playerCount` int(11) NOT NULL,
   `playerPerTeam` int(11) DEFAULT NULL,
   `requiredForPrize` int(11) DEFAULT NULL,
+  `status` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -41,11 +42,10 @@ CREATE TABLE `game` (
 -- Dumping data for table `game`
 --
 
-INSERT INTO `game` (`id`, `name`, `playerCount`, `playerPerTeam`, `requiredForPrize`, `createdAt`, `updatedAt`) VALUES
-(1, 'Valorant Game', 20, 5, 50000, '2024-10-17 20:42:33', '2024-10-17 20:42:33'),
-(2, 'R6 Game', 20, 5, 50000, '2024-10-17 20:43:36', '2024-10-17 20:43:36'),
-(3, 'LOL Game', 20, 5, 50000, '2024-10-17 20:43:45', '2024-10-17 20:43:45'),
-(5, 'ValorantGame', 20, 20, 50000, '2024-10-22 10:43:05', '2024-10-22 10:43:05');
+INSERT INTO `game` (`id`, `name`, `playerCount`, `playerPerTeam`, `requiredForPrize`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, 'Valorant Game', 20, 5, 50000, 'In progress', '2024-10-17 20:42:33', '2024-10-23 10:17:30'),
+(2, 'R6 Game', 20, 5, 50000, 'Coming soon', '2024-10-17 20:43:36', '2024-10-23 10:17:35'),
+(3, 'LOL Game', 20, 5, 50000, 'Finished', '2024-10-17 20:43:45', '2024-10-23 10:17:38');
 
 -- --------------------------------------------------------
 
