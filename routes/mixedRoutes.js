@@ -8,6 +8,6 @@ const{
 
 Router.get('/gamesforcards', getAllGamesForCards);
 
-Router.get('/dataforbrackets', getDataForBrackets);
+Router.get('/dataforbrackets/:gameid', getDataForBrackets);
 
 module.exports = Router
